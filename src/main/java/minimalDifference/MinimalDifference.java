@@ -65,20 +65,25 @@ public class MinimalDifference {
             right = right + A[i];
         }
 
-        int diff = left - right > 0 ? left - right : (left - right) * (-1);
+        int diff = Math.abs(left - right);
         result = diff;
 
         if (A.length > 2) {
-            for (int i = 1; i < A.length; i++) {
+            for (int i = 1; i < A.length - 1; i++) {
                 left = left + A[i];
                 right = right - A[i];
-                diff = left - right > 0 ? left - right : (left - right) * (-1);
+                diff = Math.abs(left - right);
                 if (diff < result) {
                     result = diff;
                 }
             }
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {-10, -20, -30, -40, 100};
+        System.out.println(solution(a));
     }
 
 }
